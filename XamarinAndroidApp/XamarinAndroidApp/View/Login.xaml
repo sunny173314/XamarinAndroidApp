@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinAndroidApp.View.Login">
+    <ContentPage.Content>
+       
+
+            <StackLayout>
+                <Label Text="phleboMobileNumber :"></Label>
+                <Entry x:Name="number" Placeholder="number" ></Entry>
+                <Label Text="mpinCode :"></Label>
+                <Entry x:Name="pin" IsPassword="True" Placeholder="MpinCode"></Entry>
+                <Button Text=" Login" Clicked="Button_Clicked"></Button>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
