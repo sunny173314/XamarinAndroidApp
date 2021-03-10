@@ -1,16 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinAndroidApp.View.Login">
-    <ContentPage.Content>
-       
+             xmlns:local2="clr-namespace:ShowHidePasswordTrigger"
+             x:Class="XamarinAndroidApp.View.Login"
+             BackgroundColor="White" NavigationPage.HasNavigationBar="False">
 
-            <StackLayout>
-                <Label Text="phleboMobileNumber :"></Label>
-                <Entry x:Name="number" Placeholder="number" ></Entry>
-                <Label Text="mpinCode :"></Label>
-                <Entry x:Name="pin" IsPassword="True" Placeholder="MpinCode"></Entry>
-                <Button Text=" Login" Clicked="Button_Clicked"></Button>
-            </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+
+    <Grid BackgroundColor="#00C2FF" >
+            <Image Source="https://images.idgesg.net/images/article/2019/05/cso_best_security_software_best_ideas_best_technology_lightbulb_on_horizon_of_circuit_board_landscape_with_abstract_digital_connective_technology_atmosphere_ideas_innovation_creativity_by_peshkov_gettyimages-965785212_3x2_2400x1600-100797318-large.jpg" Aspect="AspectFill"/>
+            <MediaElement Source="ms-appx:///https://images.idgesg.net/images/article/2019/05/cso_best_security_software_best_ideas_best_technology_lightbulb_on_horizon_of_circuit_board_landscape_with_abstract_digital_connective_technology_atmosphere_ideas_innovation_creativity_by_peshkov_gettyimages-965785212_3x2_2400x1600-100797318-large.jpg" ShowsPlaybackControls="false" 
+                      IsLooping="True" Aspect="AspectFill" AutoPlay="True" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Volume="0"/>
+            <BoxView Opacity="0.3" BackgroundColor="#00C2FF"/>
+            <Grid HeightRequest="520" Margin="30">
+                <Path Fill="#00C2FF" Aspect="Uniform" HorizontalOptions="Center"
+                  Data="M30.6,172.838V696.314L348.157,426.72Z" Opacity="0.5"/>
+                <Path Fill="White" StrokeThickness="1" Aspect="Uniform" HorizontalOptions="Center"
+                  Data="M30.6,172.838V650.665L320.465,404.581Z" Opacity="0.8"/>
+                <Path Stroke="Red" StrokeThickness="1" Aspect="Uniform" HorizontalOptions="Center"
+                  Data="M30.6,172.838V605.512L293.073,382.682Z" />
+                <StackLayout Spacing="10" VerticalOptions="CenterAndExpand" Margin="25,0">
+                    <Label Text="LOG IN" Padding="5" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                    <StackLayout Spacing="10">
+                        <Grid WidthRequest="190" Padding="10"  HorizontalOptions="Start">
+                            <!--<Entry x:Name="entryUsername" Placeholder="Email" FontSize="15"/>-->
+                            <Entry x:Name="number" Placeholder="phleboMobileNumber" Keyboard="Numeric" >
+
+                            </Entry>
+                        </Grid>
+                        <Grid WidthRequest="190" Padding="10"  HorizontalOptions="Start">
+                            <!--<Entry x:Name="userNameEntry" IsPassword="True" Placeholder="Password" FontSize="15"/>-->
+                            <Entry x:Name="pin" Placeholder="MpinCode" IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger},Path=HidePassword}" TextColor="DarkGray" FontAttributes="None" HorizontalOptions="FillAndExpand" >
+
+
+                            </Entry>
+                            <ImageButton VerticalOptions="Center" Margin="0,0,30,0" HeightRequest="20" HorizontalOptions="End" Source="ic_eye_hide">
+                                <ImageButton.Triggers>
+                                    <EventTrigger Event="Clicked">
+                                        <local2:ShowPasswordTriggerAction ShowIcon="ic_eye" HideIcon="ic_eye_hide" x:Name="ShowPasswordActualTrigger"></local2:ShowPasswordTriggerAction>
+                                    </EventTrigger>
+                                </ImageButton.Triggers>
+
+                            </ImageButton>
+
+                        </Grid>
+                        
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        
+                    </StackLayout>
+                    <Grid HorizontalOptions="Start" HeightRequest="33" WidthRequest="33" Padding="20">
+                        <Ellipse Stroke="#00c2ff" StrokeThickness="3" Aspect="Uniform" HeightRequest="33" WidthRequest="33" HorizontalOptions="Start"/>
+                        <Button x:Name="btnLogin" Clicked="Button_Clicked" IsVisible="True" BackgroundColor="red" CornerRadius="300" />
+                        <Path Fill="White" Rotation="90" Aspect="Uniform" StrokeLineCap="Round" StrokeLineJoin="Round"
+                          Data="M15.6099294,11.0552456 L12.3765961,7.82357897 C12.2574176,7.70409826 12.0779382,7.66830385 11.9220434,7.73292537 C11.7661485,7.7975469 11.6646275,7.94982156 11.6649294,8.11857897 L11.6649294,21.2502456 C11.6649294,22.4008389 10.7321893,23.333579 9.58159609,23.333579 C8.43100286,23.333579 7.49826276,22.4008389 7.49826276,21.2502456 L7.49826276,8.11857897 C7.49789351,7.95055217 7.39663523,7.79918973 7.24146862,7.73471909 C7.08630201,7.67024846 6.90759527,7.70528741 6.78826276,7.82357897 L3.55492943,11.0552456 C2.74169013,11.8684849 1.42316875,11.8684849 0.609929471,11.0552456 C-0.203309806,10.2420063 -0.203309826,8.92348493 0.609929427,8.11024563 L8.10992943,0.610245632 C8.50036143,0.219527336 9.03007272,0 9.58242943,0 C10.1347861,0 10.6644974,0.219527336 11.0549294,0.610245632 L18.5549294,8.11024563 C19.3681687,8.92348493 19.3681687,10.2420063 18.5549294,11.0552456 C17.7416901,11.8684849 16.4231687,11.8684849 15.6099294,11.0552456 L15.6099294,11.0552456 Z" HorizontalOptions="Center"/>
+
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage>

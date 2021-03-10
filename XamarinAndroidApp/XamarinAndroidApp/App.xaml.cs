@@ -8,9 +8,11 @@ namespace XamarinAndroidApp
 {
     public partial class App : Application
     {
+
         public App()
         {
             InitializeComponent();
+            Device.SetFlags(new[] { "Shapes_Experimental", "MediaElement_Experimental" });
 
             MainPage = new NavigationPage(new View.Login());
         }
